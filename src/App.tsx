@@ -5149,7 +5149,6 @@ const callAI=async(txt,hist)=>{
       headers:{'Content-Type':'application/json','Authorization':`Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`},
       body:JSON.stringify({model,max_tokens:maxTok,system:buildSys(),messages:[...hist,{role:'user',content:txt}]})
     });
-    });
     const d=await r.json();
     const rawText=d.content?.find(b=>b.type==="text")?.text||"Error de conexión.";
     const ACTION_RE=/\[ACTION:\s*(\{[\s\S]*?\})\]/g;
